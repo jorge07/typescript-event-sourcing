@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "outDir": "dist",
+        "lib": [ "es2015" ],
+        "sourceMap": true,
+        "rootDir": ".",
+        "types": [ "node" ],
+        "baseUrl": "src",
+        "paths": {
+            "app.application/*": [ "application/*" ],
+            "app.domain/*": [ "domain/*" ],
+            "app.ui/*": [ "ui/*" ]
+        }
+    },
+    "compileOnSave": true,
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

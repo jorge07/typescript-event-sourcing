@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  rmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  kibana:
+    image: kibana:5.6
+    ports:
+      - "5601:5601"
+    volumes:
+      - "./etc/dev/kibana/config:/usr/share/kibana/config"
+
+  elasticsearch:
+    image: elasticsearch:5.6
+    ports:
+      - "9200:9200"
