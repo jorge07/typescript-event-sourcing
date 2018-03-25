@@ -1,6 +1,30 @@
-version: '3'
+version: '2'
 
 services:
+  workers:
+    build:
+      context: .
+      dockerfile: ./etc/dev/node/Dockerfile
+    volumes:
+      - $PWD:/app
+    command:
+      - "yarn"
+      - "start-workers"
+    environment:
+      - MESSAGE_BROKER=amqp://guest:guest@rmq:5672
+      - ELASTIC_HOST=elasticsearch:9200
+      - ELASTIC_LOGS=error
+
+  api:
+    extends:
+      service: workers
+      file: docker-compose.yml
+    command:
+      - "yarn"
+      - "start"
+    ports:
+      - "3000:3000"
+
   rmq:
     image: rabbitmq:3-management
     environment:
