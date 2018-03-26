@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const email_1 = require("../../../../domain/user/valueObject/email");
+const email_1 = require("domain/user/valueObject/email");
 class CreateUserCommand {
     constructor(uuid, email) {
         this.uuid = uuid;

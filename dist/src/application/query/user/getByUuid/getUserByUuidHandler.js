@@ -12,9 +12,15 @@ class GetUserByUuidHandler {
     constructor(userStore) {
         this.userStore = userStore;
     }
-    handle(query) {
+    handle(query, success, error) {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.userStore.load(query.uuid);
+            try {
+                const user = yield this.userStore.load(query.uuid);
+                success({ data: user });
+            }
+            catch (err) {
+                error({ message: err.message, code: 404 });
+            }
         });
     }
 }

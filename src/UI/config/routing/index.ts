@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import { default as UserController, GetUser } from '../../controller/user'
+import { CreateUser, GetUser } from 'ui/controller/user'
 
 export type RouteCollection = {
     [key: string]: Function | any
@@ -11,6 +11,6 @@ export default (app: Express): RouteCollection => (<RouteCollection> {
         "/users/:uuid": GetUser(app.get('queryBus'))
     },
     "post": {
-        "/users": UserController(app.get('commandBus'))
+        "/users": CreateUser(app.get('commandBus'))
     }
 })

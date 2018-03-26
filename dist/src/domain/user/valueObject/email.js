@@ -1,10 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const invalidArgumentError_1 = require("../../shared/error/invalidArgumentError");
-const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+const invalidArgumentError_1 = require("domain/shared/error/invalidArgumentError");
 class Email {
     constructor() {
-        this.regex = new RegExp(emailRegex);
+        this.regex = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
     }
     static fromString(rawEmail) {
         const instance = new Email();

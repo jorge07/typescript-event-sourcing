@@ -1,9 +1,9 @@
 import { log } from 'util';
-import AMQCLi from '../../infra/shared/messaging/client';
-import { Message } from 'amqplib';
-import EventsToElastic from '../../infra/shared/event/eventsToElastic';
-import Elastic from '../../infra/shared/elastic/elastic';
 import { Domain } from 'hollywood-js';
+import { Message } from 'amqplib';
+import AMQCLi from 'infra/shared/messaging/client';
+import EventsToElastic from 'infra/shared/event/eventsToElastic';
+import Elastic from 'infra/shared/elastic/elastic';
 
 const consumer = new EventsToElastic(new Elastic())
 const broker = new AMQCLi();

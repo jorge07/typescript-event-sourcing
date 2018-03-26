@@ -1,6 +1,6 @@
 import { Domain } from 'hollywood-js'
 import UserWasCreated from '../event/userWasCreated';
-import { default as Email, EmailType } from '../valueObject/email';
+import Email, { EmailType } from '../valueObject/email';
 
 export default class User extends Domain.EventSourced {
     uuid: string;

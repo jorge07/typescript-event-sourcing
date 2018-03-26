@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const util_1 = require("util");
-const user_1 = require("../../../../domain/user/model/user");
+const user_1 = require("domain/user/model/user");
 class CreateUserHandler {
     constructor(userRepository) {
         this.userRepository = userRepository;

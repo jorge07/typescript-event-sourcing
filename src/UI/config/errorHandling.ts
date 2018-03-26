@@ -1,5 +1,3 @@
-import { log } from 'util';
-
 const ErrorHandling = (err, req, res, next) => {    
     res
        .status(err.status || err.code || 500)

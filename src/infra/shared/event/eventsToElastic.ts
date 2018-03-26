@@ -1,7 +1,6 @@
-import { log } from 'util';
 import { Domain } from 'hollywood-js';
-import Elastic from '../elastic/elastic';
 import { CreateDocumentResponse } from 'elasticsearch';
+import Elastic from '../elastic/elastic';
 
 export default class EventsToElastic {
     constructor(private esCli: Elastic) {

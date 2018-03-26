@@ -1,9 +1,9 @@
 import { Express } from 'express';
 import { log } from 'util';
-import { default as routing,  RouteCollection } from './index';
+import routing, { RouteCollection } from './index';
 
 const importer = (app: Express, routes: RouteCollection, method: string) => {
-    Object.keys(routes).forEach((key) => {
+    Object.keys(routes).forEach((key: string) => {
 
         switch (method) {
             case 'get':
@@ -18,7 +18,6 @@ const importer = (app: Express, routes: RouteCollection, method: string) => {
             case 'delete':
                 app.delete(key, routes[key])                
                 break;
-    
             default:
                 break;
         }
@@ -29,5 +28,5 @@ const importer = (app: Express, routes: RouteCollection, method: string) => {
 
 export default (app: Express) => {
     const routes = routing(app);
-    Object.keys(routes).forEach((method) => importer(app, routes[method], method))    
+    Object.keys(routes).forEach((method: string) => importer(app, routes[method], method))    
 }

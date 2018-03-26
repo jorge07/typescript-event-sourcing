@@ -1,5 +1,3 @@
-import { ENGINE_METHOD_RAND } from 'constants';
-import { CipherNameAndProtocol } from 'tls';
 import { log } from 'util';
 import { Connection, Channel, connect, Message } from 'amqplib';
 import config from '../config'

@@ -9,9 +9,10 @@
         "types": [ "node" ],
         "baseUrl": "src",
         "paths": {
-            "app.application/*": [ "application/*" ],
-            "app.domain/*": [ "domain/*" ],
-            "app.ui/*": [ "ui/*" ]
+            "application/*": [ "application/*" ],
+            "domain/*": [ "domain/*" ],
+            "infra/*": [ "infra/*" ],
+            "ui/*": [ "UI/*" ]
         }
     },
     "compileOnSave": true,

@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import Buses from '../../../infra/shared/dependencyInjection/busFactory';
+import Buses from 'infra/shared/dependencyInjection/busFactory';
 
 export default (app: Express) => {
     app.set('queryBus', Buses.AppQueryBus);

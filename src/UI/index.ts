@@ -9,8 +9,7 @@ const app = express();
 serverDecorator(app);
 
 app.listen(app.get('port'), () => {
-    console.log(('App is running at http://localhost:%d in %s mode'),
-    app.get('port'), app.get('env'));
+    log(`App is running at http://localhost:${app.get('port')} in ${app.get('env')} mode`);    
 });
 
 export default app;

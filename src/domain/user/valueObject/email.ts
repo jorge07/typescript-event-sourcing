@@ -1,10 +1,9 @@
-import InvalidArgumentError from '../../shared/error/invalidArgumentError';
+import InvalidArgumentError from 'domain/shared/error/invalidArgumentError';
+
 export type EmailType = string;
 
-const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-
 export default class Email {
-    private regex: RegExp = new RegExp(emailRegex);
+    private regex: RegExp = new RegExp(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/);
     public value: string;
 
     static fromString(rawEmail: string): Email {

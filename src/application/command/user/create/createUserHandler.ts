@@ -1,10 +1,10 @@
 import { log } from 'util';
 import { Application, EventStore } from 'hollywood-js';
 import CreateUserCommand from './createUserCommand';
-import Email from '../../../../domain/user/valueObject/email';
-import User from '../../../../domain/user/model/user';
-import UserRepository from '../../../../domain/user/repository/write/userRepository';
-import ConflictError from '../../../../domain/shared/error/conflictError';
+import Email from 'domain/user/valueObject/email';
+import User from 'domain/user/model/user';
+import UserRepository from 'domain/user/repository/write/userRepository';
+import ConflictError from 'domain/shared/error/conflictError';
 
 export default class CreateUserHandler implements Application.ICommandHandler {
     constructor(private userRepository: UserRepository) {}

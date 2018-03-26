@@ -1,10 +1,10 @@
 import { Application } from 'hollywood-js';
-import CreateUserCommand from '../../application/command/user/create/createUserCommand';
-import GetUserByUuidQuery from '../../application/query/user/getByUuid/GetUserByUuidQuery';
-import InvalidArgumentError from '../../domain/shared/error/invalidArgumentError';
-import CommandBus from '../../application/commandBus';
+import CreateUserCommand from 'application/command/user/create/createUserCommand';
+import GetUserByUuidQuery from 'application/query/user/getByUuid/GetUserByUuidQuery';
+import InvalidArgumentError from 'domain/shared/error/invalidArgumentError';
+import CommandBus from 'application/commandBus';
 
-export default (commandBus: CommandBus) => (req, res, next) => {
+export const CreateUser = (commandBus: CommandBus) => (req, res, next) => {
     const { uuid, email } = req.body;
     commandBus.handle(
         new CreateUserCommand(uuid, email), 

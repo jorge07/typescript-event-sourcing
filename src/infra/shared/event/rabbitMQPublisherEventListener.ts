@@ -1,5 +1,4 @@
 import { Domain, EventStore } from 'hollywood-js';
-import { log } from 'util';
 import AMQCLi from '../messaging/client';
 
 export default class RabbitMQPublisherEventListener extends EventStore.EventListener {

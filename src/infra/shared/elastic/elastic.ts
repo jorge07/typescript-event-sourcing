@@ -1,14 +1,13 @@
 import { Client, PingParams, CreateDocumentParams, CreateDocumentResponse } from 'elasticsearch'
-import config from '../config'
-import { log } from 'util';
 import { Domain } from 'hollywood-js';
+import config from '../config'
 
 const { ELASTIC_HOST, ELASTIC_LOGS } = config
 
 export default class Elastic {
     private client: Client | null
     
-    constructor(){
+    constructor() {
         this.connect()
     }
     
@@ -26,8 +25,6 @@ export default class Elastic {
             id: event.uuid,
             body: event
         });
-
-        log(response.result)
 
         return response
     }

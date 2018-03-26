@@ -1,3 +1,3 @@
-import AMQCLi from '../../messaging/client';
+import AMQCLi from 'infra/shared/messaging/client';
 
 export default new AMQCLi()

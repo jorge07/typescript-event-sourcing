@@ -20,10 +20,11 @@ class AMQCLi {
     connect() {
         return __awaiter(this, void 0, void 0, function* () {
             if (!this.connection) {
-                util_1.log('CONNECTIONG TO: ' + MESSAGE_BROKER);
                 const conn = this.connection = yield amqplib_1.connect(MESSAGE_BROKER);
+                this.manageConnection();
                 const channel = this.channel = yield conn.createConfirmChannel();
                 yield channel.assertExchange(this.defaultExchange, 'topic', this.defaultOptions);
+                util_1.log('CONNECTED TO BROKER');
             }
             return this.channel;
         });
@@ -33,18 +34,20 @@ class AMQCLi {
     }
     publish(exchange = 'events', routingKey = 'domain', message) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield this.connect().then((channel) => {
-                return channel.publish(exchange, routingKey, Buffer.from(message));
-            }).catch(util_1.log);
+            try {
+                return this.channel.publish(exchange, routingKey, Buffer.from(message));
+            }
+            catch (err) {
+                util_1.log(err);
+                throw err;
+            }
         });
     }
     consume(exchange = 'events', queue = 'events', action) {
-        this.connect().then((channel) => {
-            channel.assertQueue(queue, { exclusive: true }).then(() => {
-                channel.bindQueue(queue, exchange, 'info').then(() => {
-                    channel.consume(queue, action, { noAck: true });
-                });
-            });
+        return __awaiter(this, void 0, void 0, function* () {
+            yield this.channel.assertQueue(queue, { exclusive: false });
+            yield this.channel.bindQueue(queue, exchange, '#');
+            yield this.channel.consume(queue, action, { noAck: true });
         });
     }
     close() {

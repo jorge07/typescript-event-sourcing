@@ -1,9 +1,9 @@
 import { Application } from 'hollywood-js';
 import GetUserByUuidQuery from './getUserByUuidQuery';
-import UserRepository from 'app.domain/user/repository/write/userRepository';
+import UserRepository from 'domain/user/repository/write/userRepository';
 
 export default class GetUserByUuidHandler implements Application.IQueryHandler {
-    constructor(private userStore: UserRepository){}
+    constructor(private readonly userStore: UserRepository){}
 
     async handle(query: GetUserByUuidQuery, success?: (resonse: Application.AppResponse)=>void, error?: (error: Application.AppError)=>void): Promise<any> {
         try {
