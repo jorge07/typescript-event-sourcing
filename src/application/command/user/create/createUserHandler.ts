@@ -11,14 +11,9 @@ export default class CreateUserHandler implements Application.ICommandHandler {
 
     handle(command: CreateUserCommand, success: Function, error: Function): void {        
         try {
-            const userAlreadyExist = this.userRepository.load(command.uuid);
+            this.userRepository.load(command.uuid);
             
             log('User Already Exists')
-            
-            error(<Application.AppError>{
-                message: 'User Already Exist',
-                code: 409
-            });
         } catch(err) {
             const user = User.create(
                 command.uuid,
@@ -27,9 +22,16 @@ export default class CreateUserHandler implements Application.ICommandHandler {
 
             this.userRepository.save(user);
 
-            success(<Application.AppResponse>{
+            success && success(<Application.AppResponse>{
                 data: 'ack'
-            })
+            });
+
+            return;
         }
+
+        throw <Application.AppError>{
+            message: 'User Already Exist',
+            code: 409
+        };
     }
 }

@@ -5,9 +5,9 @@
   "main": "dist/src/UI/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "NODE_PATH=src node --inspect=5858 -r ts-node/register src/UI/index.ts",
+    "start": "NODE_PATH=src node --inspect=5858 -r ts-node/register/type-check src/UI/index.ts",
     "dev": "nodemon",
-    "start-workers": "NODE_PATH=src node -r ts-node/register src/UI/console/elasticEventConsumer.ts"
+    "start-workers": "NODE_PATH=src node -r ts-node/register/type-check src/UI/console/elasticEventConsumer.ts"
   },
   "devDependencies": {
     "@types/amqplib": "^0.5.7",
@@ -25,11 +25,14 @@
   "dependencies": {
     "@types/elasticsearch": "^5.0.22",
     "amqplib": "^0.5.2",
+    "apollo-server-express": "^1.3.4",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "elasticsearch": "^14.2.1",
     "express": "^4.16.2",
-    "hollywood-js": "^1.1.11",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^2.23.1",
+    "hollywood-js": "^1.1.12",
     "uuid": "^3.2.1"
   }
 }

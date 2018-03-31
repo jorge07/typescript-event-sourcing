@@ -14,7 +14,7 @@ export default class UserRepository implements Domain.IRepository {
     load(aggregateRootId: string): User {
         const eventStream = this.eventStore.load(aggregateRootId);
         const user = new User();
-
+        console.log('OK');
         return user.fromHistory(eventStream);
     }
 }

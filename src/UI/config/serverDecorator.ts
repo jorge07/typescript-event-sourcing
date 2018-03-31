@@ -4,15 +4,24 @@ import config from './config'
 import routingLoader from './routing/loader'
 import busFactory from './bus/buses'
 import ErrorHandling from './errorHandling';
+import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
+import ExecutableSchema from './gql'
 
 export default (app: Express) => {
+    busFactory(app);
+
     app
         .set('port', config.PORT)
 
-        .use(bodyParser.json())
-        .use(bodyParser.urlencoded({ extended: true }))      
+        // bodyParser is needed just for POST.
+        .use('/graphql', bodyParser.json(), graphqlExpress({ schema: ExecutableSchema(app.get('queryBus'), app.get('commandBus'))}))
+        // if you want GraphiQL enabled
+        .get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 
-    busFactory(app);
+        .use(bodyParser.json())
+        .use(bodyParser.urlencoded({ extended: true }))
+    ;
+
     routingLoader(app);
     
     app.use(ErrorHandling)
