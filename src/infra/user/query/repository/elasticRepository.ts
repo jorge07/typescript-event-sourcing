@@ -15,7 +15,7 @@ export default class UserElasticRepository implements GetUser {
         const result: SearchResponse<UserView> =  await this.elasticCli.find(
             'user',
             {
-                match: {
+                term: {
                     uuid: uuid
                 }
             },
@@ -33,7 +33,7 @@ export default class UserElasticRepository implements GetUser {
         const result: SearchResponse<UserView> =  await this.elasticCli.find(
             'user',
             {
-                match: {
+                term: {
                     email: email
                 }
             },

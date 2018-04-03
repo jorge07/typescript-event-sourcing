@@ -15,7 +15,7 @@ Register(eventBus);
 
 queryResolver.addHandler(GetUserByUuidQuery, new GetUserByUuidHandler(getUser));
 
-commandResolver.addHandler(CreateUserCommand, new CreateUserHandler(userRepository));
+commandResolver.addHandler(CreateUserCommand, new CreateUserHandler(getUser, userRepository));
 
 const AppQueryBus = new Application.QueryBus(queryResolver);
 const AppCommandBus = new Application.CommandBus(commandResolver);
