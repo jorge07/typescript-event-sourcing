@@ -9,9 +9,8 @@
     "start:production": "cd dist && NODE_PATH=src node -r tsconfig-paths/register src/UI/index.js",
     "dev": "nodemon",
     "compile": "tsc -p tsconfig.json",
-    "start-workers": "NODE_PATH=src node -r ts-node/register/type-check src/UI/console/elasticEventConsumer.ts",
-    "start-user-workers": "NODE_PATH=src node -r ts-node/register/type-check src/UI/console/elasticUserProjectionConsumer.ts",
-    "test": "NODE_PATH=src node -r ts-node/register/type-check src/UI/test.ts"
+    "event-consumer": "NODE_PATH=src node -r ts-node/register/type-check src/UI/console/elasticEventConsumer.ts",
+    "user-projections": "NODE_PATH=src node -r ts-node/register/type-check src/UI/console/elasticUserProjectionConsumer.ts"
   },
   "devDependencies": {
     "@types/amqplib": "^0.5.7",

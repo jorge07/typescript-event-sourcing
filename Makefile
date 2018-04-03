@@ -30,6 +30,10 @@ start: start-deps
 start-deps:
 	docker-compose up -d rmq kibana elasticsearch redis
 
-.PHONY: start-workers
-start-workers:
-	yarn start-workers
+.PHONY: events-consumer  # Consumer all events to store them in elastic
+events-consumer:
+	yarn events-consumer
+
+.PHONY: user-projections # Consumer user events to generate projections in elastic
+user-projections:
+	yarn user-projections

@@ -18,7 +18,14 @@ make dev
 UP Node in host and deps in containers:
 ```bash
 make start
-make start-workers
+```
+
+Event to elastic
+```bash
+make event-consumer
+```
+```bash
+make user-projections
 ```
 
 ### REST
