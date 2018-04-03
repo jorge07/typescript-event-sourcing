@@ -1,4 +1,4 @@
-const ErrorHandling = (err, req, res, next) => {    
+const ErrorHandling = (err, req, res) => {
     res
        .status(err.status || err.code || 500)
        .json({
@@ -6,6 +6,6 @@ const ErrorHandling = (err, req, res, next) => {
             error: err
         })
     ;
-}
+};
 
 export default ErrorHandling;

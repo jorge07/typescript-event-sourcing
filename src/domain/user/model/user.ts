@@ -5,7 +5,7 @@ import Email, { EmailType } from '../valueObject/email';
 export default class User extends Domain.EventSourced {
     uuid: string;
     email: EmailType;
-    createdAt: Date
+    createdAt: Date;
 
     getAggregateRootId(): string {
         return this.uuid
@@ -20,8 +20,8 @@ export default class User extends Domain.EventSourced {
     }
 
     protected applyUserWasCreated(event: UserWasCreated): void {
-        this.uuid = event.uuid
-        this.email = event.email.toString();
-        this.createdAt = event.ocurrendOn
+        this.uuid = event.uuid;
+        this.email = event.email;
+        this.createdAt = event.ocurrendOn;
     }
 }

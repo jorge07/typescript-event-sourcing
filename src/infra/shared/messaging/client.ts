@@ -5,18 +5,18 @@ import config from '../config'
 const { MESSAGE_BROKER } = config
 
 export default class AMQCLi {
-    private connection: Connection | null
-    private channel: Channel | null
+    private connection: Connection | null;
+    private channel: Channel | null;
 
-    private readonly defaultExchange: string = 'events'
-    private readonly defaultOptions: Object = { durable: true }
+    private readonly defaultExchange: string = 'events';
+    private readonly defaultOptions: Object = { durable: true };
     
     async connect(): Promise<Channel> {
         if (! this.connection) {
             const conn = this.connection = await connect(MESSAGE_BROKER);
             this.manageConnection();
             const channel = this.channel = await conn.createConfirmChannel();
-            await channel.assertExchange(this.defaultExchange, 'topic', this.defaultOptions)
+            await channel.assertExchange(this.defaultExchange, 'topic', this.defaultOptions);
             log('CONNECTED TO BROKER');
         }
 
@@ -31,7 +31,7 @@ export default class AMQCLi {
         try {
             return this.channel.publish(exchange, routingKey, Buffer.from(message));
         } catch(err) {
-            log(err)
+            log(err);
             throw err
         }
     }

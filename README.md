@@ -21,6 +21,45 @@ make start
 make start-workers
 ```
 
+### REST
+
+**Get User**
+
+`GET` `/users/:uuid`
+
+**Create User**
+
+`POST` `/users`
+```json
+{
+   "uuid": "efa48501-e187-4f17-9c71-3ea9cdb4e795",
+   "email": "demo@demo.com"
+}
+```
+
+### GraphQL
+
+`http://localhost:3000/graphiq`
+
+**Get User**
+
+```
+query {
+  user(uuid: "efa48501-e187-4f17-9c71-3ea9cdb4e795"){
+    email
+    uuid
+  }
+}
+```
+
+**Create User**
+
+```
+mutation {
+	createUser(uuid:"efa48501-e187-4f17-9c71-3ea9cdb4e795", email:"demo@demo.com")
+}
+```
+
 ### Tools
 
 - Rabbit Admin: http://localhost:15672

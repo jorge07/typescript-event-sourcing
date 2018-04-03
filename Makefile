@@ -28,7 +28,7 @@ start: start-deps
 
 .PHONY: start-deps
 start-deps:
-	docker-compose up -d rmq kibana elasticsearch
+	docker-compose up -d rmq kibana elasticsearch redis
 
 .PHONY: start-workers
 start-workers:
