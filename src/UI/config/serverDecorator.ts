@@ -4,8 +4,9 @@ import config from './config'
 import routingLoader from './routing/loader'
 import busFactory from './bus/buses'
 import ErrorHandling from './errorHandling';
-import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import ExecutableSchema from './gql'
+
+const {graphqlExpress, graphiqlExpress} = require('apollo-server-express'); // what a shit
 
 export default (app: Express) => {
     busFactory(app);

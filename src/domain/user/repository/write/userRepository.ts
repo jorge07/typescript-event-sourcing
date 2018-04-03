@@ -4,17 +4,16 @@ import User from '../../model/user';
 export default class UserRepository implements Domain.IRepository {
     constructor(private eventStore: EventStore.IEventStore) {}
 
-    save(aggregateRoot: Domain.EventSourced): void {
-        this.eventStore.append(
+    async save(aggregateRoot: Domain.EventSourced): Promise<void> {
+        await this.eventStore.append(
             aggregateRoot.getAggregateRootId(),
             aggregateRoot.getUncommitedEvents()
         );
     }
 
-    load(aggregateRootId: string): User {
-        const eventStream = this.eventStore.load(aggregateRootId);
-        const user = new User();
-        console.log('OK');
-        return user.fromHistory(eventStream);
+    async load(aggregateRootId: string): Promise<User> {
+        const eventStream = await this.eventStore.load(aggregateRootId);
+
+        return (new User()).fromHistory(eventStream);
     }
 }

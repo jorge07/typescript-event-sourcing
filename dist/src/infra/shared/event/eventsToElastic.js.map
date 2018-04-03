@@ -1,1 +1,0 @@
-{"version":3,"file":"eventsToElastic.js","sourceRoot":"","sources":["../../../../../src/infra/shared/event/eventsToElastic.ts"],"names":[],"mappings":";;AAIA;IACI,YAAoB,KAAc;QAAd,UAAK,GAAL,KAAK,CAAS;IAClC,CAAC;IAED,IAAI,CAAC,KAA2B;QAC5B,MAAM,CAAC,IAAI,CAAC,KAAK,CAAC,MAAM,CAAC,QAAQ,EAAE,KAAK,CAAC,CAAC;IAC9C,CAAC;CACJ;AAPD,kCAOC"}

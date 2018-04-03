@@ -47,3 +47,8 @@ services:
     image: elasticsearch:5.6
     ports:
       - "9200:9200"
+
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
