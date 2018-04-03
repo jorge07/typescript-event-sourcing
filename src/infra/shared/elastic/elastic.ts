@@ -36,13 +36,13 @@ export default class Elastic {
         });
     }
 
-    async find(index: string, query, size): Promise<any> {
+    async find(index: string, query, size: number): Promise<any> {
         return await this.client.search(
             {
                 index: index,
                 type: index,
                 body: {
-                    size,
+                    size: size,
                     query
                 }
             }

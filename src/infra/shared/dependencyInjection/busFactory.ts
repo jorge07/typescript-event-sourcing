@@ -6,13 +6,14 @@ import CreateUserHandler from 'application/command/user/create/createUserHandler
 import userRepository from './repositories/userRepositoryFactory';
 import { eventBus } from './eventStore/eventStore'
 import Register from './eventListeners/registerListeners'
+import { getUser } from "infra/shared/dependencyInjection/repositories/userRepositoryFactory";
 
 const commandResolver = new Application.CommandHandlerResolver();
 const queryResolver =  new Application.QueryHandlerResolver();
 
 Register(eventBus);
 
-queryResolver.addHandler(GetUserByUuidQuery, new GetUserByUuidHandler(userRepository));
+queryResolver.addHandler(GetUserByUuidQuery, new GetUserByUuidHandler(getUser));
 
 commandResolver.addHandler(CreateUserCommand, new CreateUserHandler(userRepository));
 

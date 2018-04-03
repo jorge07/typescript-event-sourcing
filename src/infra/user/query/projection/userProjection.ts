@@ -16,9 +16,13 @@ export default class UserProjectionFactory {
     async generateUserProjection(uuid: string): Promise<void> {
         const user: any = await this.userRepository.load(uuid);
 
+        this.elastic.add('user', uuid, UserProjectionFactory.userView(user)).catch(log);
+    }
+
+    private static userView(user: User | any): UserView {
         delete user['methodPrefix'];
         delete user['events'];
 
-        this.elastic.add('user', uuid, <UserView>user);
+        return <UserView>user;
     }
 }
