@@ -63,7 +63,7 @@ query {
 
 ```
 mutation {
-	createUser(uuid:"efa48501-e187-4f17-9c71-3ea9cdb4e795", email:"demo@demo.com")
+  createUser(uuid:"efa48501-e187-4f17-9c71-3ea9cdb4e795", email:"demo@demo.com")
 }
 ```
 
