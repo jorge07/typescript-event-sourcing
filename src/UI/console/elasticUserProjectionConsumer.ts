@@ -12,6 +12,9 @@ broker.connect().then(
     () => {
         broker.consume('events', 'user', (msg: Message) => {
             const domainMessage = <Domain.DomainMessage>(JSON.parse(msg.content.toString()) as any);
+
+            console.log('Revieced: ', domainMessage);
+
             consumer.generateUserProjection(domainMessage.uuid).catch(log);
         })
     }

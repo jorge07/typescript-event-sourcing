@@ -4,8 +4,8 @@ import User from "domain/user/model/user";
 import RedisSnapshot from "infra/shared/store/redisSnapshot";
 
 const eventBus = new EventStore.EventBus();
-const eventStoreDbal = new RedisStore('user', eventBus);
-const snapshotDbal = new RedisSnapshot<User>('user');
+const eventStoreDbal = new RedisStore('user');
+const snapshotDbal = new RedisSnapshot('user');
 
 const eventStore = new EventStore.EventStore(User, eventStoreDbal, eventBus, snapshotDbal);
 
