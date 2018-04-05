@@ -9,6 +9,7 @@ const Register = async (eventBus: EventStore.EventBus) => {
     eventBus
         .attach(UserWasCreated, new UserSubscriber(Broker))
         .addListener(new RabbitMQPublisherEventListener(Broker))
+    ;
 };
 
 export default Register;

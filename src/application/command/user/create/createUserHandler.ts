@@ -19,6 +19,7 @@ export default class CreateUserHandler implements Application.ICommandHandler {
 
         try {
             await this.userRepository.save(user);
+
         } catch (err){
             throw <Application.IAppError>{
                 message: err.message,

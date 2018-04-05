@@ -1732,10 +1732,8 @@ hoek@4.x.x:
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
 hollywood-js@^1.2:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/hollywood-js/-/hollywood-js-1.2.0.tgz#0d63891cfab40e58bb83767a43dc7b2bad239f20"
-  dependencies:
-    uuid "^3.2.1"
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/hollywood-js/-/hollywood-js-1.2.1.tgz#2c5d9f771ef1aceeec3cc8c6a36e0264ee878850"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"
