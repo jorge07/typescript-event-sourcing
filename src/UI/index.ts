@@ -6,6 +6,7 @@ import serverDecorator from './config/serverDecorator'
 dotenv.config();
 
 const app = express();
+
 serverDecorator(app);
 
 app.listen(app.get('port'), () => {

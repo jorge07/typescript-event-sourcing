@@ -14,7 +14,7 @@ export const CreateUser = (commandBus: Application.CommandBus) => async (req, re
 
 export const GetUser = (queryBus: Application.QueryBus) => async (req, res, next) => {
     try {
-        const response: any = await queryBus.handle(new GetUserByUuidQuery(req.params.uuid));
+        const response: any = await queryBus.ask(new GetUserByUuidQuery(req.params.uuid));
         
         return res.json(response.data)
     } catch (err) {

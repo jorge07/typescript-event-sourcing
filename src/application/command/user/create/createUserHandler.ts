@@ -4,11 +4,12 @@ import User from 'domain/user/model/user';
 import UserRepository from 'domain/user/repository/write/userRepository';
 import GetUser from 'domain/user/repository/query/getUser';
 import Email from 'domain/user/valueObject/email';
+import UserView from "domain/user/query/UserView";
 
 export default class CreateUserHandler implements Application.ICommandHandler {
     constructor(private userStore: GetUser, private userRepository: UserRepository, ) {}
 
-    async handle(command: CreateUserCommand): Promise<void|Application.AppError> {
+    async handle(command: CreateUserCommand): Promise<void|Application.IAppError> {
         await this.validateUuidAndEmail(command.uuid, command.email);
 
         const user = User.create(
@@ -18,10 +19,8 @@ export default class CreateUserHandler implements Application.ICommandHandler {
 
         try {
             await this.userRepository.save(user);
-
-            return;
         } catch (err){
-            throw <Application.AppError>{
+            throw <Application.IAppError>{
                 message: err.message,
                 code: 500
             };
@@ -30,14 +29,14 @@ export default class CreateUserHandler implements Application.ICommandHandler {
 
     private async validateUuidAndEmail(uuid: string, email: Email): Promise<void> {
         let userExist: any = await this.userStore.getUserByUuid(uuid);
-        this.failIfAlreadyExist(userExist);
+        CreateUserHandler.failIfAlreadyExist(userExist);
         userExist = await this.userStore.getUserByEmail(email.value);
-        this.failIfAlreadyExist(userExist);
+        CreateUserHandler.failIfAlreadyExist(userExist);
     }
 
-    private failIfAlreadyExist(check: any): void {
-        if (check) {
-            throw <Application.AppError>{
+    private static failIfAlreadyExist(check: UserView|null): void {
+        if (null !== check) {
+            throw <Application.IAppError>{
                 message: 'Already Exist',
                 code: 409
             };

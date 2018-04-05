@@ -1,10 +1,12 @@
-const ErrorHandling = (err, req, res) => {
+import { Response, Request } from 'express';
+
+const ErrorHandling = (err: any, req: Request, res: Response) => {
     res
-       .status(err.status || err.code || 500)
-       .json({
+        .json({
             message: err.message,
             error: err
         })
+        .status(err.status || err.code || 500)
     ;
 };
 

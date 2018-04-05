@@ -8,12 +8,12 @@ export default class GetUserByUuidHandler implements Application.IQueryHandler {
 
     async handle(query: GetUserByUuidQuery): Promise<any> {
         try {
-            return <Application.AppResponse>{
+            return <Application.IAppResponse>{
                 data: await this.userStore.getUserByUuid(query.uuid)
             };
 
         } catch(err) {
-            throw <Application.AppError>{message: err.message, code: 404}
+            throw <Application.IAppError>{message: err.message, code: 404}
         }
     }
 }

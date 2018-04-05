@@ -22,7 +22,7 @@ export default class UserElasticRepository implements GetUser {
             1
         );
 
-        if (result.hits.total > 0) {
+        if (result.hits.total !== 0) {
             return <UserView>result.hits.hits[0]._source;
         }
 
