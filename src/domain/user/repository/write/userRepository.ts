@@ -1,19 +1,14 @@
 import { Domain, EventStore } from 'hollywood-js';
 import User from '../../model/user';
 
-export default class UserRepository implements Domain.IRepository {
-    constructor(private eventStore: EventStore.IEventStore) {}
+export default class UserRepository implements Domain.IRepository<User> {
+    constructor(private eventStore: EventStore.EventStore<User>) {}
 
-    async save(aggregateRoot: Domain.EventSourced): Promise<void> {
-        await this.eventStore.append(
-            aggregateRoot.getAggregateRootId(),
-            aggregateRoot.getUncommitedEvents()
-        );
+    async save(aggregateRoot: User): Promise<void> {
+        await this.eventStore.save(aggregateRoot);
     }
 
     async load(aggregateRootId: string): Promise<User> {
-        const eventStream = await this.eventStore.load(aggregateRootId);
-
-        return (new User()).fromHistory(eventStream);
+        return await this.eventStore.load(aggregateRootId);
     }
 }

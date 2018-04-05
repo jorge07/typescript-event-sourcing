@@ -7,7 +7,7 @@ import {DomainMessage} from "hollywood-js/src/Domain/index";
 
 const { REDIS_HOST, REDIS_PORT } = config;
 
-export default class RedisStore implements EventStore.IEventStore {
+export default class RedisStore implements EventStore.IEventStoreDBAL {
     private readonly redisCli: RedisCli;
     private readonly type: string;
     private readonly eventBus: EventStore.EventBus;
@@ -35,8 +35,6 @@ export default class RedisStore implements EventStore.IEventStore {
     }
 
     async load(uuid: string): Promise<DomainEventStream> {
-
-
         const events: string[] = await this.redisCli.lrangeAsync(this.type + uuid, 0, -1).catch(log);
 
         if (events.length === 0) {
