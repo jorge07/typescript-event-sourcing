@@ -7,9 +7,9 @@ const eventBus = new EventStore.EventBus();
 const eventStoreDbal = new RedisStore('user');
 const snapshotDbal = new RedisSnapshot('user');
 
-const eventStore = new EventStore.EventStore(User, eventStoreDbal, eventBus, snapshotDbal);
+const userEventStore = new EventStore.EventStore(User, eventStoreDbal, eventBus, snapshotDbal);
 
 export {
-    eventStore,
+    userEventStore,
     eventBus
 }

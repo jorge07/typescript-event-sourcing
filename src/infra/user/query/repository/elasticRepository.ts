@@ -3,6 +3,7 @@ import GetUser from "domain/user/repository/query/getUser";
 import UserView from "domain/user/query/UserView";
 import {EmailType} from "domain/user/valueObject/email";
 import {SearchResponse} from "elasticsearch";
+import {log} from "util";
 
 export default class UserElasticRepository implements GetUser {
     private readonly elasticCli: Elastic;
@@ -20,7 +21,7 @@ export default class UserElasticRepository implements GetUser {
                 }
             },
             1
-        );
+        ).catch(log);
 
         if (result.hits.total !== 0) {
             return <UserView>result.hits.hits[0]._source;
@@ -38,7 +39,7 @@ export default class UserElasticRepository implements GetUser {
                 }
             },
             1
-        );
+        ).catch(log);
 
         if (result.hits.total > 0) {
             return <UserView>result.hits.hits[0]._source;

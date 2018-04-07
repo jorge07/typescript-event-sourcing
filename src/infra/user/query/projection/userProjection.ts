@@ -1,14 +1,14 @@
+import {EventStore} from 'hollywood-js'
+import {log} from "util";
 import Elastic from "infra/shared/elastic/elastic";
-import UserRepository from "domain/user/repository/write/userRepository";
 import User from "domain/user/model/user";
 import UserView from "domain/user/query/UserView";
-import {log} from "util";
 
 export default class UserProjectionFactory {
     private readonly elastic: Elastic;
-    private readonly userRepository: UserRepository;
+    private readonly userRepository: EventStore.EventStore<User>;
 
-    constructor(userRepository: UserRepository) {
+    constructor(userRepository: EventStore.EventStore<User>) {
         this.elastic = new Elastic();
         this.userRepository = userRepository;
     }

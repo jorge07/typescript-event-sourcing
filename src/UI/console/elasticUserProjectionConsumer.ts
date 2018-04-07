@@ -2,10 +2,10 @@ import { Domain } from 'hollywood-js';
 import { Message } from 'amqplib';
 import AMQCLi from 'infra/shared/messaging/client';
 import UserProjectionFactory from "infra/user/query/projection/userProjection";
-import UserRepository from 'infra/shared/dependencyInjection/repositories/userRepositoryFactory';
 import {log} from "util";
+import {userEventStore} from "infra/shared/dependencyInjection/eventStore/eventStore";
 
-const consumer = new UserProjectionFactory(UserRepository);
+const consumer = new UserProjectionFactory(userEventStore);
 const broker = new AMQCLi();
 
 broker.connect().then(
