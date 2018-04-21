@@ -1731,9 +1731,9 @@ hoek@4.x.x:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-4.2.1.tgz#9634502aa12c445dd5a7c5734b572bb8738aacbb"
 
-hollywood-js@^1.2:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/hollywood-js/-/hollywood-js-1.2.1.tgz#2c5d9f771ef1aceeec3cc8c6a36e0264ee878850"
+hollywood-js@^1.3:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/hollywood-js/-/hollywood-js-1.3.0.tgz#7ad945f8ba9f1582452e40d086ee73fd8e9fdc77"
 
 home-or-tmp@^2.0.0:
   version "2.0.0"

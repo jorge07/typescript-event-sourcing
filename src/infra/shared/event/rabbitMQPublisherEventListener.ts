@@ -6,7 +6,7 @@ export default class RabbitMQPublisherEventListener extends EventStore.EventList
         super()
     }
 
-    on(event: Domain.DomainEvent): void {
-        this.publisher.publish('events', 'domain.events', JSON.stringify(event));
+    on(message: Domain.DomainMessage): void {
+        this.publisher.publish('events', message.eventType, JSON.stringify(message));
     }
 }

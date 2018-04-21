@@ -10,7 +10,7 @@ const broker = new AMQCLi();
 
 broker.connect().then(
     () => {
-        broker.consume('events', 'domain.events', (msg: Message) => {
+        broker.consume('events', '#', (msg: Message) => {
             consumer.send(<Domain.DomainMessage>(JSON.parse(msg.content.toString()) as any)).catch(log)
         })
     }

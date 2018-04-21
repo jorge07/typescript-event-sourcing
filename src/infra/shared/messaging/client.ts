@@ -37,9 +37,9 @@ export default class AMQCLi {
     }
 
     async consume(exchange: string = 'events', queue: string = 'events', action: (mgs: Message | null) => any) {
-        await this.channel.assertQueue(queue, {exclusive: false});
+        await this.channel.assertQueue(queue, { exclusive: false });
         await this.channel.bindQueue(queue, exchange, queue);
-        await this.channel.consume(queue, action, {noAck: true});
+        await this.channel.consume(queue, action, { noAck: true });
     }
 
     close(): void {
