@@ -33,7 +33,7 @@
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "elasticsearch": "^14.2.1",
-    "express": "^4.16.2",
+    "express": "^4.17.3",
     "graphql": "^0.13.2",
     "graphql-tools": "^2.23.1",
     "hollywood-js": "^1.3",
